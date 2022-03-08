@@ -31,8 +31,12 @@ watch the results in the right.
 ```
 2. Run the project by running CucumberOptions class in CucumberOptions.java under config folder.
 3. Observe the tests. They should all pass
-4. Change below value to true in config.properties file to run tests in headless mode
+4. After tests have completed, open report.html file located in test-report folder to view test results
+5. Change below value to true in config.properties file to run tests in headless mode
 
 ```sh
 headless.active=false
 ```
+
+Support: Alex   
+waiganjo.a.mo@gmail.com

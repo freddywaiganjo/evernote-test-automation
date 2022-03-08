@@ -1,13 +1,17 @@
 package stepdefinitions;
 
+import com.vimalselvam.cucumber.listener.Reporter;
 import config.ReadConfig;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.io.File;
 
 public class SharedDriver {
 
@@ -50,9 +54,21 @@ public class SharedDriver {
 
     @After
     public void afterScenario() {
+/*        Reporter.loadXMLConfig(new File("src/test/resources/extent-config.xml"));
+        Reporter.setSystemInfo("user", System.getProperty("user.name"));
+        Reporter.setSystemInfo("os", "Mac OSX");
+        Reporter.setTestRunnerOutput("Sample test runner output message");*/
         initialized = false;
         driver.quit();
 
+    }
+
+    @AfterClass
+    public static void teardown() {
+        Reporter.loadXMLConfig(new File("src/test/resources/extent-config.xml"));
+        Reporter.setSystemInfo("user", System.getProperty("user.name"));
+        Reporter.setSystemInfo("os", "Mac OSX");
+        Reporter.setTestRunnerOutput("Sample test runner output message");
     }
 
 }
